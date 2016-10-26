@@ -1,0 +1,32 @@
+{
+  "name": "grunt-contrib-obfuscate",
+  "description": "Grunt plugin that obfuscates your JavaScript using the javascript-obfuscator library.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Tiago Serafim"
+  },
+  "repository": "javascript-obfuscator/grunt-contrib-obfuscator",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "main": "tasks/obfuscator.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "javascript-obfuscator": "^0.7.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-internal": "^1.1.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
+  },
+  "keywords": [],
+  "files": [
+    "tasks"
+  ]
+}
