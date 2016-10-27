@@ -8,7 +8,7 @@
   "repository": "javascript-obfuscator/grunt-contrib-obfuscator",
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "main": "tasks/obfuscator.js",
   "scripts": {
