@@ -1,5 +1,5 @@
 {
-  "name": "grunt-contrib-obfuscate",
+  "name": "grunt-contrib-obfuscator",
   "description": "Grunt plugin that obfuscates your JavaScript using the javascript-obfuscator library.",
   "version": "1.0.0",
   "author": {

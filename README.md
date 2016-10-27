@@ -5,9 +5,9 @@ Grunt plugin for [javascript-obfuscator](https://github.com/javascript-obfuscato
 
 **Consider this code alpha.**
 
-## Installation
+[![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
 
-**It's not published on NPM yet.**
+## Installation
 
 Install the package with NPM:
 
