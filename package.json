@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-obfuscate",
   "description": "Grunt plugin that obfuscates your JavaScript using the javascript-obfuscator library.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": {
     "name": "Tiago Serafim"
   },
@@ -25,7 +25,16 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0"
   },
-  "keywords": [],
+  "keywords": [
+    "gruntplugin",
+    "obfuscator",
+    "js obfuscator",
+    "javascript obfuscator",
+    "obfuscation",
+    "code protection",
+    "grunt obfuscator",
+    "javascript"
+  ],
   "files": [
     "tasks"
   ]
