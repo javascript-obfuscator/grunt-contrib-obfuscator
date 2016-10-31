@@ -1,9 +1,7 @@
 grunt-contrib-obfuscator
 ========================
 
-Grunt plugin for [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator).
-
-**Consider this code alpha.**
+Grunt plugin for [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator). You can try the javascript-obfuscator module and see all its options here: https://javascriptobfuscator.herokuapp.com
 
 [![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
 
@@ -26,8 +24,8 @@ obfuscator: {
         },
         files: {
             'dest/output.js': [
-            'src/js/file1.js',
-            'src/js/file2.js'
+                'src/js/file1.js',
+                'src/js/file2.js'
             ]
         }
     }

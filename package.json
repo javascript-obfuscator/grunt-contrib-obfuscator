@@ -12,7 +12,9 @@
   },
   "main": "tasks/obfuscator.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
     "chalk": "^1.0.0",
