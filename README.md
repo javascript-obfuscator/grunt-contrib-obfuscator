@@ -1,17 +1,47 @@
-grunt-contrib-obfuscator
-========================
+# grunt-contrib-obfuscator [![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
 
-Grunt plugin for [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator). You can try the javascript-obfuscator module and see all its options here: https://javascriptobfuscator.herokuapp.com
+> Obfuscate JavaScript files using [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)
 
-[![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
+You can try the javascript-obfuscator module and see all its options here: https://javascriptobfuscator.herokuapp.com
 
-## Installation
+## Getting Started
 
-Install the package with NPM:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-`npm install --save grunt-contrib-obfuscator`
+```shell
+npm install grunt-contrib-obfuscator --save-dev
+```
 
-## Usage
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-contrib-obfuscator');
+```
+
+## Obfuscator task
+_Run this task with the `grunt obfuscator` command._
+
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
+
+## Options
+
+[See the options on the obfuscator repo](https://github.com/javascript-obfuscator/javascript-obfuscator#javascript-obfuscator-options).
+
+_Note that at this time the `sourceMap` isn't implemented in this plugin._
+
+In addition the the obfuscator options, you can also use:
+
+#### banner
+Type: `String`
+Default: `''`
+
+This string will be prepended to the obfuscated output. Template strings (e.g. `<%= config.value %>` will be expanded automatically.
+
+## Usage examples
+
+#### Default options
+
+This configuration will obfuscate the input files using the default options.
 
 ```javascript
 obfuscator: {
@@ -32,8 +62,27 @@ obfuscator: {
 }
 ```
 
-## Options
+#### Debug protection and banner
 
-[See the options on the obfuscator repo](https://github.com/javascript-obfuscator/javascript-obfuscator#javascript-obfuscator-options).
+Here you code will be protected against debugging
 
-Note that at this time the `sourceMap` isn't implemented in this plugin.
+```javascript
+obfuscator: {
+    options: {
+        banner: '// obfuscated with grunt-contrib-obfuscator.\n',
+        debugProtection: true,
+        debugProtectionInterval: true
+    },
+    task1: {
+        options: {
+            // options for each sub task
+        },
+        files: {
+            'dest/output.js': [
+                'src/js/file1.js',
+                'src/js/file2.js'
+            ]
+        }
+    }
+}
+```

@@ -8,7 +8,7 @@ function readFile(file) {
 
 exports.obfuscator = {
   single: function(test) {
-    test.expect(3);
+    test.expect(4);
 
     var result = readFile('tmp/single-out.js');
 
@@ -22,6 +22,9 @@ exports.obfuscator = {
 
     // tests whether the `reservedNames` option was correctly passed to the library
     test.ok(result.indexOf('upper') !== -1);
+
+    // checks is the `banner` option is working
+    test.ok(result.indexOf('// obfuscated by javascript-obfuscator\n') === 0);
 
     test.done();
   },

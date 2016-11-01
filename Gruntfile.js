@@ -24,6 +24,7 @@ module.exports = function (grunt) {
       single: {
         options: {
           reservedNames: ['upper'],
+          banner: '// obfuscated by javascript-obfuscator\n'
         },
         files: {
           'tmp/single-out.js': [

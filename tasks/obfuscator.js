@@ -9,6 +9,11 @@ function obfuscate(source, options) {
   return obfuscationResult.getObfuscatedCode();
 }
 
+// Converts \r\n to \n
+function normalizeLf(string) {
+  return string.replace(/\r\n/g, '\n');
+}
+
 module.exports = function (grunt) {
   var getAvailableFiles = function (filesArray) {
     return filesArray.filter(function (filepath) {
@@ -27,7 +32,11 @@ module.exports = function (grunt) {
     };
 
     this.files.forEach(function (file) {
-      var options = this.options({});
+      var options = this.options({
+        banner: ''
+      });
+
+      var banner = normalizeLf(options.banner);
 
       var availableFiles = getAvailableFiles(file.src);
 
@@ -50,7 +59,9 @@ module.exports = function (grunt) {
         grunt.warn('JavaScript Obfuscation failed at ' + availableFiles + '.');
       }
 
-      grunt.file.write(file.dest, obfuscated);
+      var output = banner + obfuscated;
+
+      grunt.file.write(file.dest, output);
       created.files++;
 
     }, this);
