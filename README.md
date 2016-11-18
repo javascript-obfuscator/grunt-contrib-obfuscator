@@ -1,6 +1,6 @@
 # grunt-contrib-obfuscator [![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
 
-> Obfuscate JavaScript files using [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)
+> Obfuscate JavaScript files using [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)@0.8.0.
 
 You can try the javascript-obfuscator module and see all its options here: https://javascriptobfuscator.herokuapp.com
 
@@ -64,14 +64,15 @@ obfuscator: {
 
 #### Debug protection and banner
 
-Here you code will be protected against debugging
+Here you code will be protected against debugging and locked to the domain `www.example.com`.
 
 ```javascript
 obfuscator: {
     options: {
         banner: '// obfuscated with grunt-contrib-obfuscator.\n',
         debugProtection: true,
-        debugProtectionInterval: true
+        debugProtectionInterval: true,
+        domainLock: ['www.example.com']
     },
     task1: {
         options: {
