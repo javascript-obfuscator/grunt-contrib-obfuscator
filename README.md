@@ -1,6 +1,6 @@
 # grunt-contrib-obfuscator [![Build Status](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator.svg?branch=master)](https://travis-ci.org/javascript-obfuscator/grunt-contrib-obfuscator)
 
-> Obfuscate JavaScript files using [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)@0.8.0.
+> Obfuscate JavaScript files using [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)@0.8.1.
 
 You can try the javascript-obfuscator module and see all its options here: https://javascriptobfuscator.herokuapp.com
 
