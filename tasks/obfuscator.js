@@ -83,7 +83,7 @@ module.exports = function (grunt) {
 
           var output = banner + obfuscated;
         
-          grunt.file.write(file.dest + filename, output);
+          grunt.file.write(file.dest + fileSrc, output);
         });
       }
 
