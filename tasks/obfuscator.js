@@ -69,6 +69,8 @@ module.exports = function (grunt) {
         var output = banner + obfuscated;
 
         grunt.file.write(file.dest, output);
+
+        created.files++;
       } else {
         availableFiles.forEach(function (fileSrc) {
           try {
@@ -84,11 +86,10 @@ module.exports = function (grunt) {
           var output = banner + obfuscated;
         
           grunt.file.write(file.dest + fileSrc, output);
+
+          created.files++;
         });
       }
-
-      created.files++;
-
     }, this);
 
     if (created.files > 0) {
