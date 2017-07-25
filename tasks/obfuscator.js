@@ -14,6 +14,10 @@ function normalizeLf(string) {
   return string.replace(/\r\n/g, '\n');
 }
 
+function getFilename(path) {
+  return path.replace(/^.*[\\\/]/, '');
+}
+
 module.exports = function (grunt) {
   var getAvailableFiles = function (filesArray) {
     return filesArray.filter(function (filepath) {
@@ -47,23 +51,45 @@ module.exports = function (grunt) {
 
       var obfuscated = '';
 
-      try {
-        var totalCode = availableFiles.map(function (file) {
-            return grunt.file.read(file);
-        }).join('');
+      var filenameDest = getFilename(file.dest);
 
-        obfuscated = obfuscate(totalCode, options);
+      if (filenameDest) {
+        try {
+          var totalCode = availableFiles.map(function (file) {
+              return grunt.file.read(file);
+          }).join('');
 
-      } catch (err) {
-        grunt.log.error(err);
-        grunt.warn('JavaScript Obfuscation failed at ' + availableFiles + '.');
+          obfuscated = obfuscate(totalCode, options);
+
+        } catch (err) {
+          grunt.log.error(err);
+          grunt.warn('JavaScript Obfuscation failed at ' + availableFiles + '.');
+        }
+
+        var output = banner + obfuscated;
+
+        grunt.file.write(file.dest, output);
+
+        created.files++;
+      } else {
+        availableFiles.forEach(function (fileSrc) {
+          try {
+            var code = grunt.file.read(fileSrc);
+
+            obfuscated = obfuscate(code, options);
+
+          } catch (err) {
+            grunt.log.error(err);
+            grunt.warn('JavaScript Obfuscation failed at ' + fileSrc + '.');
+          }
+
+          var output = banner + obfuscated;
+        
+          grunt.file.write(file.dest + fileSrc, output);
+
+          created.files++;
+        });
       }
-
-      var output = banner + obfuscated;
-
-      grunt.file.write(file.dest, output);
-      created.files++;
-
     }, this);
 
     if (created.files > 0) {

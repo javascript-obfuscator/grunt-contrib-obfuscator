@@ -62,6 +62,27 @@ obfuscator: {
 }
 ```
 
+This configuration will obfuscate the input files in a destination folder by keeping the original names and directories
+
+```javascript
+obfuscator: {
+    options: {
+        // global options for the obfuscator
+    },
+    task1: {
+        options: {
+            // options for each sub task
+        },
+        files: {
+            'dest/': [ // the files and their directories will be created in this folder
+                'src/js/file1.js',
+                'src/js/folder/file2.js'
+            ]
+        }
+    }
+}
+```
+
 #### Debug protection and banner
 
 Here you code will be protected against debugging and locked to the domain `www.example.com`.

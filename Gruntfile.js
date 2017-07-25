@@ -42,6 +42,17 @@ module.exports = function (grunt) {
             'test/fixtures/file2.js'
           ]
          }
+      },
+
+      folderDest: {
+        options: {
+        },
+        files: {
+          'tmp/': [
+            'test/fixtures/file3.js',
+            'test/fixtures/folder/file4.js'
+          ]
+         }
       }
     },
 

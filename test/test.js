@@ -42,5 +42,23 @@ exports.obfuscator = {
     test.ok(result.indexOf('Forty Two') === -1);
 
     test.done();
+  },
+  folderDest: function(test) {
+    test.expect(4);
+
+    var result1 = readFile('tmp/test/fixtures/file3.js');
+    var result2 = readFile('tmp/test/fixtures/folder/file4.js');
+
+    var ask = eval(result1);
+    test.equal(ask('Hello World'), 'HELLO WORLD?');
+
+    var doubt = eval(result2);
+    test.equal(doubt('Hello World'), 'hello world...');
+
+    // tests whether the obfuscation worked
+    test.ok(result1.indexOf('toUpperCase') === -1);
+    test.ok(result2.indexOf('toLowerCase') === -1);
+
+    test.done();
   }
 };
