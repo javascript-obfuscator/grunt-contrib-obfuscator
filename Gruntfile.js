@@ -46,6 +46,7 @@ module.exports = function (grunt) {
 
       folderDest: {
         options: {
+          unicodeEscapeSequence: true,
         },
         files: {
           'tmp/': [
