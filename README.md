@@ -29,7 +29,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 _Note that at this time the `sourceMap` isn't implemented in this plugin._
 
-In addition the the obfuscator options, you can also use:
+In addition to the obfuscator options, you can also use:
 
 #### banner
 Type: `String`
