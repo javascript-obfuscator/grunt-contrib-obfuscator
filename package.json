@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
-    "javascript-obfuscator": "^0.10.0"
+    "javascript-obfuscator": "^0.23.2"
   },
   "devDependencies": {
     "grunt": "^1.0.0",
