@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
-    "javascript-obfuscator": "^0.24.6"
+    "javascript-obfuscator": "^0.25.2"
   },
   "devDependencies": {
     "grunt": "^1.0.0",
@@ -28,7 +28,7 @@
     "grunt-contrib-nodeunit": "^1.0.0"
   },
   "peerDependencies": {
-    "javascript-obfuscator": "^0.24.6"
+    "javascript-obfuscator": "^0.25.2"
   },
   "keywords": [
     "gruntplugin",
