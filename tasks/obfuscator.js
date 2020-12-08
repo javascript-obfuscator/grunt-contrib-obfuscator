@@ -6,7 +6,11 @@ var JavaScriptObfuscator = require('javascript-obfuscator');
 
 function obfuscate(source, options) {
   var obfuscationResult = JavaScriptObfuscator.obfuscate(source, options);
-  return obfuscationResult.getObfuscatedCode();
+  var sourceMap = obfuscationResult.getSourceMap();
+  return {
+    code: obfuscationResult.getObfuscatedCode(),
+    map: sourceMap && JSON.parse(sourceMap)
+  };
 }
 
 // Converts \r\n to \n
@@ -29,6 +33,14 @@ module.exports = function (grunt) {
     });
   };
 
+  function writeMap(filenames, map, mapFilename) {
+    if(!map) {
+      return;
+    } // source map is set to inline, or disabled.
+    map.sources = filenames;
+    grunt.file.write(mapFilename, JSON.stringify(map));
+  }
+
   grunt.registerMultiTask('obfuscator', 'Obfuscate JavaScript', function () {
     var created = {
       maps: 0,
@@ -44,12 +56,12 @@ module.exports = function (grunt) {
 
       var availableFiles = getAvailableFiles(file.src);
 
-      if (options.sourceMap) {
-        grunt.log.error('Source Maps are not available yet.');
+      if (options.sourceMap && options.banner) {
+        grunt.log.error('Source Maps are not available with banner option yet.');
         return;
       }
 
-      var obfuscated = '';
+      var obfuscated;
 
       var filenameDest = getFilename(file.dest);
 
@@ -66,8 +78,20 @@ module.exports = function (grunt) {
           grunt.warn('JavaScript Obfuscation failed at ' + availableFiles + '.');
         }
 
-        var output = banner + obfuscated;
+        var output = banner + obfuscated.code;
 
+        if(options.sourceMap) {
+          if(availableFiles.length > 1) {
+            grunt.log.error('Source Maps are not available with multiple files yet. Hint: you can use grunt-contrib-concat to combine files.');
+          } else {
+            var mapFilename = options.sourceMapFilename || file.dest + '.map';
+            if(options.sourceMapMode !== 'inline') {
+              writeMap(availableFiles, obfuscated.map, mapFilename);
+              output += '\n//# sourceMappingURL=' + (options.sourceMapBaseUrl || '') + '/' + mapFilename;
+            }
+            created.files++;
+          }
+        }
         grunt.file.write(file.dest, output);
 
         created.files++;
@@ -83,8 +107,11 @@ module.exports = function (grunt) {
             grunt.warn('JavaScript Obfuscation failed at ' + fileSrc + '.');
           }
 
-          var output = banner + obfuscated;
+          var output = banner + obfuscated.code;
         
+          if(options.sourceMap) {
+            grunt.log.error('Source Maps are not available with multiple files yet. Hint: you can use grunt-contrib-concat to combine files.');
+          }
           grunt.file.write(file.dest + fileSrc, output);
 
           created.files++;
