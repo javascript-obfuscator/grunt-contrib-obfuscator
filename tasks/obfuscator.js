@@ -53,13 +53,17 @@ module.exports = function (grunt) {
 
       var filenameDest = getFilename(file.dest);
 
+      var execOptions = Object.assign({
+          identifiersPrefix: (options.baseIdentifiersPrefix || '_') + created.files
+      }, options);
+
       if (filenameDest) {
         try {
           var totalCode = availableFiles.map(function (file) {
               return grunt.file.read(file);
           }).join('');
 
-          obfuscated = obfuscate(totalCode, options);
+          obfuscated = obfuscate(totalCode, execOptions);
 
         } catch (err) {
           grunt.log.error(err);
@@ -76,7 +80,7 @@ module.exports = function (grunt) {
           try {
             var code = grunt.file.read(fileSrc);
 
-            obfuscated = obfuscate(code, options);
+            obfuscated = obfuscate(code, execOptions);
 
           } catch (err) {
             grunt.log.error(err);

@@ -34,6 +34,13 @@ _Note that at this time the `sourceMap` isn't implemented in this plugin._
 
 In addition to the obfuscator options, you can also use:
 
+#### baseIdentifiersPrefix
+Type: `String`
+Default: `'_'`
+
+This string will be used as a prefix for the identifiersPrefix values. It must not be numeric. The identifiersPrefix will be set to `'baseIdentifiersPrefix' + n` where 'n' is an auto-incrementing number.
+
+
 #### banner
 Type: `String`
 Default: `''`
